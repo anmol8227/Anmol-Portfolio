@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anmol | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:Poppins, sans-serif;
+  background:radial-gradient(circle at top left,#9b111e,#050509,#000);
+  color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+  width:100%;position:fixed;top:0;left:0;
+  padding:15px 40px;
+  background:#0009;
+  display:flex;justify-content:space-between;align-items:center;
+  backdrop-filter:blur(6px);
+  z-index:100;
+}
+.logo{font-size:20px;font-weight:700;}
+.logo span{color:#ff3b3b;}
+.nav-links a{
+  margin-left:20px;color:#ddd;font-size:14px;
+}
+.nav-links a:hover{color:#fff;}
+
+/* SECTION */
+section{padding:100px 40px;}
+
+/* SCROLL REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:all .8s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* HERO SECTION */
+#home{
+  display:grid;grid-template-columns:1.4fr 1fr;
+  align-items:center;gap:40px;
+}
+.hero-text h1{font-size:32px;margin:10px 0;}
+.hero-text p{opacity:.85;max-width:450px;}
+
+.hero-buttons{margin-top:20px;display:flex;gap:15px;flex-wrap:wrap;}
+.btn{
+  padding:10px 22px;
+  border-radius:30px;
+  background:#ff3b3b;
+  border:1px solid #ff3b3b;
+  color:#fff;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn-outline{
+  background:transparent;color:#ffb3b3;border:1px solid #ff3b3b;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 18px rgba(255,59,59,.7);
+}
+
+/* AVATAR + BADGES */
+.hero-avatar{
+  position:relative;
+  width:220px;
+  height:220px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* AK circle */
+.avatar-circle{
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,#ffe066,#ff3b3b,#1a0000,#000);
+  box-shadow:0 0 35px rgba(255,224,102,.7);
+  display:flex;align-items:center;justify-content:center;
+  font-size:60px;font-weight:700;
+  animation:floatPhoto 4s ease-in-out infinite;
+}
+
+/* small skill badges around avatar */
+.skill-badge{
+  position:absolute;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#000c;
+  border:1px solid #ff3b3b70;
+  font-size:11px;
+  box-shadow:0 0 12px #000;
+  white-space:nowrap;
+}
+
+/* positions + individual animation */
+.badge1{
+  top:-6px;
+  right:-10px;
+  animation:badgeFloat1 4s ease-in-out infinite;
+}
+.badge2{
+  bottom:-6px;
+  left:-10px;
+  animation:badgeFloat2 4.3s ease-in-out infinite;
+}
+.badge3{
+  bottom:25px;
+  right:-28px;
+  animation:badgeFloat3 4.8s ease-in-out infinite;
+}
+
+/* avatar + badge animations */
+@keyframes floatPhoto{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
+}
+@keyframes badgeFloat1{
+  0%{transform:translate(0,0);}
+  50%{transform:translate(4px,-6px);}
+  100%{transform:translate(0,0);}
+}
+@keyframes badgeFloat2{
+  0%{transform:translate(0,0);}
+  50%{transform:translate(-4px,6px);}
+  100%{transform:translate(0,0);}
+}
+@keyframes badgeFloat3{
+  0%{transform:translate(0,0);}
+  50%{transform:translate(3px,4px);}
+  100%{transform:translate(0,0);}
+}
+
+/* SOCIAL */
+.social-row{margin-top:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.social-icon-circle{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid #fff3;
+  display:flex;align-items:center;justify-content:center;
+  transition:.2s;
+}
+.social-icon-circle:hover{
+  transform:translateY(-2px);
+  background:#ff3b3b33;
+  box-shadow:0 0 12px rgba(255,59,59,.6);
+}
+
+/* TITLE STYLE */
+.section-title{
+  font-size:24px;font-weight:600;margin-bottom:15px;position:relative;
+}
+.section-title::after{
+  content:"";position:absolute;left:0;bottom:-5px;width:60px;height:2px;background:#ff3b3b;
+}
+
+/* ABOUT SECTION */
+.about-grid{
+  display:grid;grid-template-columns:1.3fr 1fr;gap:40px;
+}
+.tag{
+  background:#0009;border:1px solid #fff3;
+  padding:5px 12px;border-radius:20px;font-size:12px;
+  margin:4px;display:inline-block;
+}
+.tag.highlight{background:#ff3b3b;border-color:#ff3b3b;}
+
+/* TERMINAL BOX */
+.terminal-card{
+  background:#0008;border:1px solid #fff2;border-radius:12px;
+  padding:15px;font-family:monospace;font-size:13px;
+}
+
+/* PROJECTS */
+.projects-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;margin-top:20px;
+}
+.project-card{
+  background:#0007;border:1px solid #fff2;border-radius:12px;
+  padding:15px;transition:.2s;
+}
+.project-card:hover{
+  transform:translateY(-4px);
+  border-color:#ff3b3b;
+  box-shadow:0 0 18px rgba(255,59,59,.5);
+}
+
+/* CONTACT */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;
+}
+.contact-item{margin-bottom:8px;font-size:14px;}
+.contact-form{
+  background:#0008;border:1px solid #fff3;border-radius:12px;padding:15px;
+}
+.contact-form input,.contact-form textarea{
+  width:100%;background:#000;border:1px solid #fff3;
+  padding:8px;border-radius:8px;color:#fff;margin-bottom:10px;
+}
+.contact-form input:focus,.contact-form textarea:focus{
+  border-color:#ff3b3b;
+}
+
+footer{text-align:center;padding:20px;opacity:.6;font-size:12px;}
+
+@media(max-width:900px){
+  #home{grid-template-columns:1fr;text-align:center;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .hero-avatar{margin-top:20px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">Anmol<span>.dev</span></div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="reveal">
+  <div class="hero-text">
+    <small>Hello, I'm Anmol 👋</small>
+    <h1>Data & AI Explorer</h1>
+    <p>
+      I am a B.Tech CSE student skilled in Python, Java, Data Analysis
+      and Machine Learning. I love solving problems and building useful projects.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="resume.pdf" download class="btn">DOWNLOAD CV</a>
+      <a href="#projects" class="btn btn-outline">View Projects</a>
+    </div>
+
+    <div class="social-row">
+      <span>Socials →</span>
+      <a href="https://www.linkedin.com/in/anmol8227" target="_blank" class="social-icon-circle">in</a>
+      <a href="https://www.instagram.com/anmol_choudhary8" target="_blank" class="social-icon-circle">📷</a>
+      <a href="https://github.com/anmol8227" target="_blank" class="social-icon-circle">🐙</a>
+    </div>
+  </div>
+
+  <div>
+    <div class="hero-avatar">
+      <div class="avatar-circle">AK</div>
+      <div class="skill-badge badge1">Python</div>
+      <div class="skill-badge badge2">Java</div>
+      <div class="skill-badge badge3">ML</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-grid">
+    <div>
+      <p>
+        I’m <b>Anmol Kumar</b>, a B.Tech CSE student passionate about
+        Python, Java, Data Analysis and Machine Learning.
+        I work on real-world projects like Fake News Detection
+        and Library Management System using clean, structured code.
+      </p>
+      <br>
+      <p>
+        I have completed internships at <b>SoftNexis</b> (Python & Data Analysis)
+        and <b>Ardent Pvt Ltd</b> (Java Development), gaining hands-on experience 
+        with datasets, ML basics, file handling and reporting tasks.
+      </p>
+      <br>
+      <p>
+        I aim to grow into AI/ML and software development roles
+        while improving communication, teamwork and problem-solving skills.
+      </p>
+      <br>
+
+      <span class="tag highlight">Python</span>
+      <span class="tag">NumPy</span>
+      <span class="tag">Pandas</span>
+      <span class="tag">Seaborn</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Java (OOP)</span>
+      <span class="tag">Data Cleaning</span>
+      <span class="tag">NLP</span>
+      <span class="tag">MS Office</span>
+      <span class="tag">Team Management</span>
+      <span class="tag">Communication Skills</span>
+    </div>
+
+    <div class="terminal-card">
+      const dev = {<br>
+      &nbsp;&nbsp;name: "Anmol Kumar",<br>
+      &nbsp;&nbsp;skills: ["Python","Java","ML","Data Analysis"],<br>
+      &nbsp;&nbsp;internships:[<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"SoftNexis – Data Analysis",<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"Ardent Pvt Ltd – Java Development"<br>
+      &nbsp;&nbsp;],<br>
+      &nbsp;&nbsp;projects:[<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"Fake News Detection",<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;"Library Management System"<br>
+      &nbsp;&nbsp;],<br>
+      &nbsp;&nbsp;learning:["Gen AI","Advanced Python"]<br>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+  <h2 class="section-title">My Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3 class="project-title">Fake News Detection</h3>
+      <p class="project-desc">
+        ML model to classify news as real/fake using Python, NLP & Logistic Regression.
+      </p>
+      <span class="tag">Python</span>
+      <span class="tag">NLP</span>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Library Management System</h3>
+      <p class="project-desc">
+        Java-based system to manage books, members and issue/return records.
+      </p>
+      <span class="tag">Java</span>
+      <span class="tag">OOP</span>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Sales Dashboard</h3>
+      <p class="project-desc">
+        Dashboard showing sales insights, KPIs and analytics using cleaned data.
+      </p>
+      <span class="tag">Power BI</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <h2 class="section-title">Get In Touch</h2>
+
+  <div class="contact-grid">
+
+    <div>
+      <p>Contact me for projects, internships, and collaborations.</p>
+      <div class="contact-item">📧 anmolkumar822790@gmail.com</div>
+      <div class="contact-item">📱 8227901504</div>
+      <div class="contact-item">📍 New Delhi, India</div>
+
+      <div class="contact-item">
+        📄 <a href="resume.pdf" download style="color:#ff3b3b;">Download Resume</a>
+      </div>
+
+      <div class="contact-item">
+        🔗
+        <a href="https://www.linkedin.com/in/anmol8227" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/anmol8227" target="_blank">GitHub</a> |
+        <a href="https://www.instagram.com/anmol_choudhary8" target="_blank">Instagram</a>
+      </div>
+    </div>
+
+    <!-- MAILTO WORKING FORM -->
+    <form class="contact-form"
+          action="mailto:anmolkumar822790@gmail.com"
+          method="POST"
+          enctype="text/plain">
+      
+      <input name="name" placeholder="Your Name" required>
+      <input name="email" type="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Write your message..." required></textarea>
+
+      <button class="btn" type="submit">SEND MESSAGE</button>
+    </form>
+
+  </div>
+</section>
+
+<footer>© 2025 Anmol Kumar · Built with ❤️</footer>
+
+<script>
+// scroll reveal animation
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{ threshold: 0.15 });
+
+reveals.forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
